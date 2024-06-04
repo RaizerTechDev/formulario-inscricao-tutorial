@@ -1,0 +1,80 @@
+:root {
+  --Red: hsl(0, 100%, 74%);
+  --Green: hsl(154, 59%, 51%);
+  --Blue: hsl(248, 32%, 49%);
+  --DarkBlue: hsl(249, 10%, 26%);
+  --GrayishBlue: hsl(246, 25%, 77%);
+}
+
+body {
+  background-color: #0f1232;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 20px;
+}
+.terms__title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: rgb(147, 249, 92);
+  font-weight: bold;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+.terms__paragraph {
+  margin-bottom: 10px;
+  color: #ffffffff;
+  font-weight: bold;
+}
+
+/* Estilos para o botão "Voltar" na página de termos e condições */
+.terms {
+  text-align: left;
+  margin-top: 60px;
+}
+
+.terms__button {
+  background-color: #4cafaa; /* Cor de fundo padrão */
+  color: white; /* Cor do texto */
+  padding: 10px 20px; /* Espaçamento interno */
+  border: none; /* Sem borda */
+  border-radius: 5px; /* Borda arredondada */
+  font-size: 16px; /* Tamanho da fonte */
+  cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+  text-decoration: none; /* Sem sublinhado */
+  display: inline-block; /* Display inline-block */
+  transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.terms__button:hover {
+  background-color: #45a049; /* Cor de fundo ao passar o mouse */
+  color: #3d3f3f;
+  border: 1px solid transparent;
+  border-bottom: 0.5rem solid #45a049;
+  transform: scale(1.1);
+}
+
+.footer {
+  background-color: var(--DarkBlue);
+  margin-top: 200px;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}  
+ 
+
+footer span {
+  color: rgb(147, 249, 92);
+  font-weight: bold;
+}
+
+a {
+  color: var(--Green);
+}
+
+a:hover {
+  color: var(--Red);
+  transform: scale(1.1);
+}

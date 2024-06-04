@@ -1,0 +1,244 @@
+:root {
+  --Red: hsl(0, 100%, 74%);
+  --Green: hsl(154, 59%, 51%);
+  --Blue: hsl(248, 32%, 49%);
+  --DarkBlue: hsl(249, 10%, 26%);
+  --GrayishBlue: hsl(246, 25%, 77%);
+}
+
+body {
+  background-image: url("../images/bg-intro-mobile.png");
+  background-color: var(--Red);
+  font-family: poppins;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  margin: 0; /* Remover margens padrão */
+  padding: 0; /* Remover preenchimento padrão */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Garantir que o body ocupe a altura total da tela */
+}
+
+main {
+  flex: 1; /* Permitir que o main cresça para ocupar o espaço disponível */
+}
+
+.page__header {
+  color: hsl(154, 92%, 14%);
+  font-weight: 900;
+  font-family: Poppins, sans-serif;
+  font-size: 38px;
+  margin: 0 auto;
+  margin-top: 5.5rem;
+  line-height: 2rem;
+  font-weight: bold;
+  text-decoration: none; /* Remove underline from header */
+}
+
+.page__text {
+  text-decoration: underline;
+  text-decoration-color: #333; /* Apply underline only to this span */
+  font-weight: bold;
+}
+
+.page__span {
+  font-size: 28px;
+  color: rgb(147, 249, 92);
+  font-weight: bold;
+  letter-spacing: normal;
+  text-decoration: none; /* Ensure no underline is applied */
+  font-style: italic;
+}
+
+.page__introduction {
+  margin: 2.5rem 1.5rem;
+  font-weight: bold;
+}
+
+.page__info {
+  color: hsl(248, 32%, 49%);
+  font-weight: bold;
+  font-style: italic;
+}
+
+.form--subscription {
+  position: relative;
+  background-color: white;
+  margin: 1rem;
+  margin-top: 3rem;
+  padding: 1rem;
+  padding-top: 0rem;
+  border-radius: 0.5rem;
+  box-shadow: 0rem 0.5rem hsla(0, 0%, 0%, 0.2);
+}
+
+.form__input {
+  width: 100%;
+  margin-top: 2rem;
+  border-radius: 0.2rem;
+  text-indent: 1rem;
+  padding: 1rem 0rem;
+  border-color: var(--GrayishBlue);
+  border-style: solid;
+  border-width: 1px;
+  position: relative;
+}
+
+.form__error {
+  border-color: var(--Red);
+  border-width: 1px;
+  position: absolute;
+  z-index: -1;
+  right: 2rem;
+  margin-top: 1.75rem;
+}
+
+.form__errorshow {
+  z-index: 3;
+}
+
+.form__errormessage {
+  color: var(--Red);
+  font-size: 12px;
+  text-align: right;
+  margin: 0;
+}
+
+.form__password-container {
+  position: relative;
+}
+
+.form__input-wrapper {
+  position: relative;
+}
+
+.form__toggle-password {
+  position: absolute;
+  top: 65%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #333;
+}
+
+.form__toggle-password.fa-eye-slash {
+  right: 30px; /* Ajuste conforme necessário para manter a posição quando a senha estiver visível */
+}
+
+.form__strength-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.form__strength-indicator {
+  height: 100%;
+  width: 0;
+  background-color: #e70b0b;
+  transition: width 0.5s ease, background-color 0.5s ease;
+}
+
+.form__strength-text {
+  color: #082785;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.form__tip {
+  font-style: italic;
+  color: #e70b0b;
+  font-size: 0.6rem;
+  max-width: 70%;
+  margin: 0 auto 10px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.form__terms {
+  margin-top: 20px;
+}
+
+.form__input:focus {
+  border-color: var(--DarkBlue);
+  border-width: 1px;
+  outline: none;
+  caret-color: var(--DarkBlue);
+}
+
+.form__button {
+  background-color: var(--Green);
+  width: calc(100% - 2rem);
+  padding: 1rem;
+  margin-top: 1rem;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.terms {
+  color: var(--Red);
+  text-decoration: none;
+}
+
+.footer {
+  background-color: var(--DarkBlue);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto; /* Empurrar o footer para o fundo */
+}
+
+footer span {
+  color: rgb(147, 249, 92);
+  font-weight: bold;
+}
+
+a:hover {
+  color: var(--Red);
+  transform: scale(1.1);
+}
+
+a {
+  color: var(--Green);
+}
+
+@media screen and (min-width: 750px) {
+  body {
+    margin-top: -80px;
+  }
+  .signuppage {
+    padding: 5rem;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .rightpage {
+    width: 45%;
+  }
+
+  .leftpage {
+    width: 55%;
+    margin: auto;
+  }
+
+  .header,
+  .introduction {
+    text-align: left;
+  }
+
+  .header {
+    margin: 1.5rem;
+    width: 20rem;
+    font-family: poppins-bold;
+    font-weight: 400;
+    font-size: xx-large;
+  }
+}

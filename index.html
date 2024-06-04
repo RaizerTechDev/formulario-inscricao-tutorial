@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="./assets/css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <script defer type="text/javascript" src="./assets/js/script.js"></script>
+
+  <link rel="shortcut icon"
+    href="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHR0cGJzeDVidHIwbmo0dnFrOWx5NGJ6eTd5Ymc1N3E4d2M4dG15ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3a53VvGpzUgh05qq7W/giphy.gif"
+    type="image/x-icon" />
+  <title>Formulário/Inscrição-Tutorial</title>
+</head>
+
+<body>
+  <main class="signuppage">
+    <div class="leftpage">
+      <h1 class="page__header">
+        <span class="page__text">Aprenda a programar!!</span>
+        <br /><br />
+        <span class="page__span">"Observando os outros."</span>
+      </h1>
+
+
+      <p class="page__introduction">
+        Uma das formas mais eficazes de aprender a programar é observando como programadores experientes trabalham. Ao assistir vídeos tutoriais, acompanhar projetos de código aberto e participar de comunidades de desenvolvedores, você pode absorver práticas e padrões que facilitam o desenvolvimento de software eficiente e limpo. Essa prática permite que você veja como problemas reais são resolvidos e como diferentes abordagens podem ser aplicadas para otimizar soluções. Ao observar os outros, você também ganha inspiração e ideias para aplicar em seus próprios projetos.
+      </p>
+      <span class="page__info">Para mais dicas, preencha o formulário!</span>
+    </div>
+    <div class="rightpage">
+      <form class="form form--subscription">
+        <div class="form__input-group">
+          <img src="./assets/images/icon-error.svg" class="form__error" />
+          <input placeholder="First Name" class="form__input" />
+          <img src="./assets/images/icon-error.svg" class="form__error" />
+          <input placeholder="Last Name" class="form__input" />
+          <img src="./assets/images/icon-error.svg" class="form__error" />
+          <input placeholder="Email Address" class="form__input" />
+
+          <div class="form__password-container">
+            <div class="form__input-wrapper">
+              <img src="./assets/images/icon-error.svg" class="form__error" />
+              <input id="passwordInput" type="password" placeholder="Password" class="form__input" />
+              <i id="togglePassword" class="fas fa-eye form__toggle-password"></i>
+            </div>
+
+            <div class="form__strength-bar">
+              <div id="passwordStrengthIndicator" class="form__strength-indicator"></div>
+            </div>
+          </div>
+          <p id="passwordStrengthText" class="form__strength-text"></p>
+          <p id="passwordTip" class="form__tip">
+            Sua senha deve conter letras minúsculas e maiúsculas, números e
+            caracteres especiais.
+          </p>
+
+          <img src="./assets/images/icon-error.svg" class="form__error" />
+          <textarea rows="2" placeholder="Specific Interests (Frontend, Backend, DevOps, etc.)"
+            class="form__input"></textarea>
+
+          <div class="form__button" id="button">Enviar</div>
+
+          <div class="form__terms">
+            <label>
+              <input type="checkbox" name="terms" required>
+              <a href="terms.html" > Eu aceito os termos e condições</a>.
+            </label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__attribution">
+      Copyright 2024
+      <a class="fotter--portfolio" href="https://rafarz76dev-portfoliotech.netlify.app/" target="_blank">RafaRz76Dev</a>
+      All Rights Reserved. Coded by<span class="footer--span"> Rafael Raizer</span></a>.
+    </div>
+  </footer>
+</body>
+
+</html>

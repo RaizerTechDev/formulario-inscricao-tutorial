@@ -1,0 +1,25 @@
+Formulário de Inscrição-Tutorial/
+│
+├── .vscode/
+│   └── settings.json
+│
+├── assets/
+│   ├── images/
+│   │   ├── bg-intro-desktop.png
+│   │   ├── bg-intro-mobile.png
+│   │   ├── icon-error.svg
+│   │
+│   └── css/
+│   │   ├── styles.css
+│   │   └── terms.css
+│   │
+│   └── js/
+│       └── script.js
+│
+├── index.html
+│
+├── terms.html
+│
+└── README.md
+
+
