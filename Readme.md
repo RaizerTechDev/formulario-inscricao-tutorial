@@ -5,7 +5,7 @@
  <div align="center">
 <img src="https://media.giphy.com/media/9TFBxN300KpCUI6sBD/giphy.gif" align="center" height="45" width="45">
 
-[ ( Clique aqui e se inscreva para mais dicas ao: `Formulário de Inscrição!!`) ]()
+[ ( Clique aqui e se inscreva para mais dicas ao: `Formulário de Inscrição!!`) ](https://rafarz76dev-formulario-inscricao.netlify.app/)
 
 <br>
 
@@ -13,7 +13,7 @@
   
 <img src= "https://media.giphy.com/media/3zSF3Gnr7cxMbi6WoP/giphy.gif" align="center" height="55" width="55"> [Demonstração-Formulário/Inscrição-Tutorial] <img src= "https://media.giphy.com/media/E5DzZsofmgxc9wjbhX/giphy.gif" align="center" height="35" width="35">
 
-<img height="480em" src="./assets/images/apresentacao-readme-linkedln.gif"  align="center">
+<img height="480em" src="./assets/images/apresentacao-readme.gif"  align="center">
 
 ---
 
