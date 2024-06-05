@@ -72,9 +72,14 @@ footer span {
 
 a {
   color: var(--Green);
+  font-size: 15px;
 }
 
 a:hover {
   color: var(--Red);
-  transform: scale(1.1);
+  font-size: 18px;
+  cursor: pointer;
+  transform: scale(
+    1.1
+  ); /* Aumenta a escala da imagem em 10% ao passar o mouse */
 }

@@ -60,6 +60,18 @@ main {
   color: hsl(248, 32%, 49%);
   font-weight: bold;
   font-style: italic;
+  font-size: 18px;
+
+  text-decoration: underline;
+}
+
+.page__info:hover {
+  font-size: 20px;
+  color: var(--DarkBlue);
+  cursor: pointer;
+  transform: scale(
+    1.1
+  ); /* Aumenta a escala da imagem em 10% ao passar o mouse */
 }
 
 .form--subscription {
@@ -145,18 +157,17 @@ main {
 
 .form__strength-text {
   color: #082785;
-  font-size: 0.7rem;
+  font-size: 1rem;
   font-weight: bold;
 }
 
 .form__tip {
   font-style: italic;
   color: #e70b0b;
-  font-size: 0.6rem;
+  font-size: 1rem;
   max-width: 70%;
   margin: 0 auto 10px;
-  font-weight: bold;
-  margin-left: 20px;
+  font-weight: bold; 
 }
 
 .form__terms {
@@ -201,13 +212,18 @@ footer span {
   font-weight: bold;
 }
 
-a:hover {
-  color: var(--Red);
-  transform: scale(1.1);
-}
-
 a {
   color: var(--Green);
+  font-size: 15px;
+}
+
+a:hover {
+  color: var(--Red);
+  font-size: 18px;
+  cursor: pointer;
+  transform: scale(
+    1.1
+  ); /* Aumenta a escala da imagem em 10% ao passar o mouse */
 }
 
 @media screen and (min-width: 750px) {
