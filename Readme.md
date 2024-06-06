@@ -21,11 +21,7 @@
 
 ### 📌 Objetivos:
 
-- O projeto que desenvolvi, "Formulário/Inscrição-Tutorial", é uma ferramenta essencial para minha trajetória acadêmica e profissional.
-
-<br/>
-
-- Este projeto consiste em um formulário de inscrição onde os usuários interagem para receber dicas sobre como aprender a programar. Ele não apenas demonstra minhas habilidades técnicas, mas também a minha capacidade de aplicar metodologias eficazes, como a metodologia BEM, que garante que o código seja fácil de entender, escalar e manter.
+- Este projeto não é apenas um formulário de inscrição comum. Ele representa um marco da minha jornada técnica, onde convergem habilidades e visão. Por trás da simplicidade de preenchimento de dados, reside a complexidade sutil de implementações meticulosas. Utilizando a metodologia BEM como uma ferramenta de precisão, eu não apenas desenvolvo código, mas esculpo uma experiência fluida e eficiente. Este formulário não é apenas uma interface, é uma expressão tangível da minha dedicação à excelência técnica e à arte de simplificar o complexo.
 
 <br/>
 
