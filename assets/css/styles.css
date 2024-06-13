@@ -215,7 +215,7 @@ button:disabled {
   color: white;
   text-align: center;
   padding: 1rem;
-  margin-top: auto; /* Empurrar o footer para o fundo */
+  margin-top: 80px; /* Empurrar o footer para o fundo */  
 }
 
 footer span {

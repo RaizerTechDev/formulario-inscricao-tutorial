@@ -223,9 +223,9 @@ const formSubmit = new FormSubmit({
   form: "[data-form]",
   button: "[data-button]",
   successRedirect:
-    "http://127.0.0.1:5504/success_page.html",
+    "https://rafarz76dev-formulario-inscricao.netlify.app/success_page.html",
   errorRedirect:
-    "http://127.0.0.1:5504/error_page.html",
+    "https://rafarz76dev-formulario-inscricao.netlify.app/error_page.html",
 });
 
 // Inicializa a instância do formulário
