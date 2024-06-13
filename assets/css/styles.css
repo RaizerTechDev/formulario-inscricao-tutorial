@@ -194,6 +194,17 @@ main {
   cursor: pointer;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  background: #555b69;
+}
+
+.button--animation {
+  width: 30px; /* Ajuste o tamanho conforme necessário */
+  height: 30px; /* Ajuste o tamanho conforme necessário */
+  vertical-align: middle; /* Centraliza verticalmente em relação ao texto */
+}
+
 .terms {
   color: var(--Red);
   text-decoration: none;

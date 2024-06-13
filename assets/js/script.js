@@ -1,156 +1,232 @@
-// Define uma array de mensagens de erro para cada campo
-const errormessages = [
-  "First name cannot be empty",
-  "Last name cannot be empty",
-  "Looks like this is not an email",
-  "Password cannot be empty",
-  "Interesses Específicos cannot be empty", // Esta mensagem de erro é para o campo de "Interesses Específicos"
-];
-// inputs
-// Seleciona todos os campos de entrada pelo nome da classe CSS
-const inputs = document.getElementsByClassName("form__input");
-
-// Seleciona todos os elementos com a classe "error" (usada para exibir os ícones de erro)
-const errorSigns = document.getElementsByClassName("form__error");
-
-// Seleciona o botão de envio do formulário pelo ID
-const subscribingbutton = document.getElementById("button");
-
-//Seleciona o campo de entrada de senha e o ícone de alternância
-
-const togglePassword = document.getElementById("togglePassword");
-const passwordStrengthIndicator = document.getElementById("passwordStrengthIndicator");
-const passwordStrengthText = document.getElementById("passwordStrengthText");
-
-// Função para validar um endereço de e-mail
-const isValidEmail = (email) => {
-  const atLocation = email.indexOf("@");
-  if (atLocation > 0) {
-    const domain = email.substring(atLocation + 1);
-    if (domain.indexOf(".") > 0 && domain.indexOf(".") < domain.length - 1) {
-      return true;
+class FormSubmit {
+  constructor(settings) {
+    // Inicializa a classe FormSubmit com as configurações passadas
+    this.settings = settings;
+    // Seleciona o formulário com base no seletor fornecido nas configurações
+    this.form = document.querySelector(settings.form);
+    // Seleciona o botão do formulário com base no seletor fornecido nas configurações
+    this.formButton = document.querySelector(settings.button);
+    if (this.form) {
+      // Obtém a URL de envio do formulário a partir do atributo action
+      this.url = this.form.getAttribute("action");
     }
-  }
-  return false;
-};
-
-// Função para remover a marca de erro e mensagem de erro associada a um campo específico
-const removeError = (index) => {
-  errorSigns[index].classList.remove("form__errorshow");
-  if (inputs[index].nextSibling?.nodeName == "P") {
-    console.log("removing error");
-    inputs[index].nextSibling?.remove();
+    // Vincula o método sendForm ao contexto atual
+    this.sendForm = this.sendForm.bind(this);
+    // Inicializa a funcionalidade de alternância de visibilidade da senha
+    this.initPasswordToggle();
+    // Inicializa o verificador de força da senha
+    this.initPasswordStrengthChecker();
   }
 
-   if (inputs[index].nextSibling?.nodeName == "P") {
-    console.log("removing error");
-    inputs[index].nextSibling?.remove();
+  // Método para exibir a mensagem de sucesso
+  displaySuccess() {
+    window.location.href = this.settings.successRedirect;
   }
-};
 
-// Função para adicionar a marca de erro e mensagem de erro associada a um campo específico
-const addError = (index) => {
-  errorSigns[index].classList.add("form__errorshow");
-
-  if (inputs[index].nextSibling?.nodeName != "P") {
-    const pItem = document.createElement("p");
-    pItem.innerHTML = errormessages[index];
-    pItem.classList.add("form__errormessage");
-    // Insira a mensagem de erro após o campo de senha
-    inputs[index].insertAdjacentElement("afterend", pItem);
+  displayError() {
+    window.location.href = this.settings.errorRedirect;
   }
-};
 
-// Função para verificar a força da senha
-const checkPasswordStrength = (password) => {
-  const strength = {
-    0: "Very weak", // Muito Fraca
-    1: "Weak", // Fraca
-    2: "Moderate", // Moderada
-    3: "Strong", // Forte
-    4: "Very strong", // Muito Forte
-  };
+  // Método para obter os dados do formulário como um objeto
+  getFormObject() {
+    const formObject = {};
+    // Seleciona todos os campos do formulário que possuem o atributo name
+    const fields = this.form.querySelectorAll("[name]");
+    fields.forEach((field) => {
+      // Adiciona cada campo ao objeto formObject com o nome do campo como chave
+      formObject[field.getAttribute("name")] = field.value;
+    });
+    return formObject;
+  }
 
-  const colors = {
-    0: "#e70b0b", // Vermelho
-    1: "#ff4d4d", // Vermelho Claro
-    2: "#ff994d", // Laranja
-    3: "#ffc107", // Amarelo
-    4: "#00cc00", // Verde
-  };
+  // Método para validar os campos do formulário
+  validateForm() {
+    const formObject = this.getFormObject();
+    let isValid = true;
+    let errorMessage = "";
 
-  let score = 0;
-  if (password.length >= 8) score++;
-  if (/[A-Z]/.test(password)) score++;
-  if (/[0-9]/.test(password)) score++;
-  if (/[^A-Za-z0-9]/.test(password)) score++;
+    // Validação para o campo nome
+    if (!formObject.firstName || formObject.firstName.trim() === "") {
+      isValid = false;
+      errorMessage += "First Name is required.\n";
+    }
 
-  passwordStrengthIndicator.style.width = (score * 25) + "%";
-  passwordStrengthIndicator.style.backgroundColor = colors[score];
-  passwordStrengthText.innerText = strength[score];
-};
+    // Validação para o campo sobrenome
+    if (!formObject.lastName || formObject.lastName.trim() === "") {
+      isValid = false;
+      errorMessage += "Last Name is required.\n";
+    }
 
-passwordInput.addEventListener("input", (event) => {
-  checkPasswordStrength(event.target.value);
-});
+    // Validação para o campo email
+    if (
+      !formObject.email ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formObject.email)
+    ) {
+      isValid = false;
+      errorMessage += "A valid Email Address is required.\n";
+    }
 
-// Função para alternar a visibilidade da senha
- togglePassword.addEventListener("click", () => {
-  if (passwordInput.type === "password") {
-    passwordInput.type = "text";
-    togglePassword.classList.remove("fa-eye");
-   togglePassword.classList.add("fa-eye-slash");
-   } else {
-    passwordInput.type = "password";
-    togglePassword.classList.remove("fa-eye-slash");
-    togglePassword.classList.add("fa-eye");
-   }
- });
+    // Validação para o campo senha
+    if (!formObject.password || !this.isValidPassword(formObject.password)) {
+      isValid = false;
+      errorMessage += "Password is required and must meet the criteria.\n";
+    }
 
-// Adiciona um ouvinte de evento de clique ao botão de envio do formulário
-subscribingbutton?.addEventListener("click", () => {
-  const information = []; // Array para armazenar as informações do formulário
-  let allcorrect = true; // Variável para verificar se todos os campos estão corretos
+    // Validação para a aceitação dos termos
+    if (!this.form.querySelector('[name="terms"]').checked) {
+      isValid = false;
+      errorMessage += "You must accept the terms and conditions.\n";
+    }
 
-  // Loop pelos campos de entrada do formulário
-  for (let i = 0; i < inputs.length; i++) {
-    if (i == 2 && isValidEmail(inputs[i].value)) { // Verifica se é o campo de e-mail e se é um e-mail válido
-      information[i] = inputs[i].value;
-      removeError(i);
-    } else if (inputs[i].value && i != 2) { // Verifica se o campo não está vazio (exceto para o campo de e-mail)
-      removeError(i);
-      information[i] = inputs[i].value;
-    } else if (i == 4 && inputs[i].value.trim() === "") { // Verifica se o campo de "Interesses Específicos" está vazio
-      addError(i);
-      allcorrect = false;
-    } else if (i == 4 && inputs[i].value.trim() !== "") { // Verifica se o campo de "Interesses Específicos" não está vazio
-      removeError(i);
-      information[i] = inputs[i].value;
-    } else {
-      addError(i);
-      allcorrect = false;
+    // Exibe um alerta se houver erros de validação
+    if (!isValid) {
+      alert(errorMessage);
+    }
+
+    return isValid;
+  }
+
+  // Método chamado ao submeter o formulário
+  onSubmission(event) {
+    event.preventDefault(); // Evita o envio padrão do formulário
+    event.target.disabled = true; // Desabilita o botão de envio
+    event.target.innerHTML =
+      '<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGo1MWEzNzJsdXRybjNoYm55aG1pcThsdnB0bDVtNWdxaWp0cnB4eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/CJFoawrEEq5P3ptexI/giphy.gif" alt="Enviando..." class="button--animation">'; // Adiciona uma animação ao botão
+  }
+
+  // Método assíncrono para enviar o formulário
+  async sendForm(event) {
+    event.preventDefault(); // Evita o envio padrão do formulário
+    if (!this.validateForm()) {
+      event.target.disabled = false; // Reabilita o botão se a validação falhar
+      event.target.innerHTML = "Submit"; // Redefine o texto do botão se a validação falhar
+      return; // Interrompe o envio se o formulário for inválido
+    }
+    try {
+      this.onSubmission(event); // Chama o método onSubmission
+      await fetch(this.url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(this.getFormObject()), // Envia os dados do formulário como JSON
+      });
+      this.displaySuccess(); // Exibe a mensagem de sucesso
+    } catch (error) {
+      this.displayError(); // Exibe a mensagem de erro
+      throw new Error(error); // Lança um erro
     }
   }
 
-  // Verifica se o checkbox de aceitação dos termos foi marcado
-  const termsCheckbox = document.querySelector('input[name="terms"]');
-  if (!termsCheckbox.checked) { // Verifica se o checkbox não está marcado
-    alert("Por favor, aceite os termos e condições.");
-    allcorrect = false;
+  // Inicializa a funcionalidade de alternância de visibilidade da senha
+  initPasswordToggle() {
+    const togglePassword = document.getElementById("togglePassword");
+    const passwordInput = document.getElementById("passwordInput");
+
+    togglePassword.addEventListener("click", () => {
+      // Alterna o tipo do campo de senha entre "password" e "text"
+      const type =
+        passwordInput.getAttribute("type") === "password" ? "text" : "password";
+      passwordInput.setAttribute("type", type);
+      // Alterna o ícone do botão
+      togglePassword.classList.toggle("fa-eye-slash");
+    });
   }
 
-  // Se todos os campos estiverem corretos, exibe um alerta de agradecimento e limpa os campos do formulário
-  if (allcorrect) {
-    alert(
-      `Obrigado ${information[0]} ${information[1]} por se inscrever. Mais informações serão enviadas para ${information[2]}`
+  // Inicializa o verificador de força da senha
+  initPasswordStrengthChecker() {
+    const passwordInput = document.getElementById("passwordInput");
+    const strengthIndicator = document.getElementById(
+      "passwordStrengthIndicator"
     );
-    for (let i = 0; i < inputs.length; i++) {
-      inputs[i].value = "";
-    }
+    const strengthText = document.getElementById("passwordStrengthText");
+
+    passwordInput.addEventListener("input", () => {
+      const password = passwordInput.value;
+      const strength = this.getPasswordStrength(password);
+
+      // Atualiza a barra de força da senha
+      strengthIndicator.style.width = strength.percent + "%";
+      strengthIndicator.style.backgroundColor = strength.color;
+      // Atualiza o texto de força da senha
+      strengthText.textContent = strength.text;
+    });
   }
+
+  // Método para determinar a força da senha
+  getPasswordStrength(password) {
+    let strength = { percent: 0, color: "#e70b0b", text: "Very Weak" };
+
+    // Aumenta a força da senha com base em diferentes critérios
+    if (password.length >= 8) {
+      strength.percent += 20;
+      strength.text = "Very Weak";
+    }
+    if (/[a-z]/.test(password)) {
+      strength.percent += 20;
+    }
+    if (/[A-Z]/.test(password)) {
+      strength.percent += 20;
+    }
+    if (/[0-9]/.test(password)) {
+      strength.percent += 20;
+    }
+    if (/[^a-zA-Z0-9]/.test(password)) {
+      strength.percent += 20;
+    }
+
+    // Define a cor e o texto de força da senha
+
+    if (strength.percent >= 100) {
+      strength.color = "#00cc00";
+      strength.text = "Very Strong";
+   
+    } else if (strength.percent >= 80) {
+      strength.color = "#ffc107";
+      strength.text = "Strong";
+
+    } else if (strength.percent >= 60) {
+      strength.color = "#ff994d";
+      strength.text = "Moderate";
+
+    } else if (strength.percent >= 40) {
+      strength.color = "#ff4d4d";
+      strength.text = "Weak";
+    
+    } else {
+    strength.color = "#e70b0b";
+    strength.text = "Very Weak";
+  }
+    return strength;
+  }
+
+  // Método para verificar se a senha atende aos critérios
+  isValidPassword(password) {
+    return (
+      password.length >= 8 &&
+      /[a-z]/.test(password) &&
+      /[A-Z]/.test(password) &&
+      /[0-9]/.test(password) &&
+      /[^a-zA-Z0-9]/.test(password)
+    );
+  }
+
+  // Inicializa o manipulador de eventos de envio do formulário
+  init() {
+    if (this.form) this.formButton.addEventListener("click", this.sendForm);
+    return this;
+  }
+}
+
+const formSubmit = new FormSubmit({
+  form: "[data-form]",
+  button: "[data-button]",
+  successRedirect:
+    "http://127.0.0.1:5504/success_page.html",
+  errorRedirect:
+    "http://127.0.0.1:5504/error_page.html",
 });
 
-
-
-
-  
+// Inicializa a instância do formulário
+formSubmit.init();

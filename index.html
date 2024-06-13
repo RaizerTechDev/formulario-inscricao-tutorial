@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link rel="stylesheet" type="text/css" href="./assets/css/styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <script defer type="text/javascript" src="./assets/js/script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" /> 
 
   <link rel="shortcut icon"
     href="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHR0cGJzeDVidHIwbmo0dnFrOWx5NGJ6eTd5Ymc1N3E4d2M4dG15ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3a53VvGpzUgh05qq7W/giphy.gif"
@@ -31,46 +30,41 @@
       <span class="page__info">Para mais dicas, preencha o formulário!</span>
     </div>
     <div class="rightpage">
-      <form class="form form--subscription">
+      <form 
+        action="https://formsubmit.co/ajax/cfe9ae8569fd516a2b959d44cb748457" 
+        method="POST" 
+        data-form 
+        class="form form--subscription">
         <div class="form__input-group">
-          <img src="./assets/images/icon-error.svg" class="form__error" />
-          <input placeholder="First Name" class="form__input" />
-          <img src="./assets/images/icon-error.svg" class="form__error" />
-          <input placeholder="Last Name" class="form__input" />
-          <img src="./assets/images/icon-error.svg" class="form__error" />
-          <input placeholder="Email Address" class="form__input" />
-
-          <div class="form__password-container">
-            <div class="form__input-wrapper">
-              <img src="./assets/images/icon-error.svg" class="form__error" />
-              <input id="passwordInput" type="password" placeholder="Password" class="form__input" />
-              <i id="togglePassword" class="fas fa-eye form__toggle-password"></i>
+            <input name="firstName" placeholder="First Name" class="form__input" required />
+            <input name="lastName" placeholder="Last Name" class="form__input" required />
+            <input name="email" type="email" placeholder="Email Address" class="form__input" required />
+            
+            <div class="form__password-container">
+                <div class="form__input-wrapper">
+                    <input id="passwordInput" name="password" type="password" placeholder="Password" class="form__input" required />
+                    <i id="togglePassword" class="fas fa-eye form__toggle-password"></i>
+                </div>
+                <div class="form__strength-bar">
+                    <div id="passwordStrengthIndicator" class="form__strength-indicator"></div>
+                </div>
             </div>
-
-            <div class="form__strength-bar">
-              <div id="passwordStrengthIndicator" class="form__strength-indicator"></div>
+            <p id="passwordStrengthText" class="form__strength-text"></p>
+            <p id="passwordTip" class="form__tip">
+                Your password must contain lowercase and uppercase letters, numbers, and special characters.
+            </p>
+            
+            <textarea name="interests" rows="2" placeholder="Specific Interests (Frontend, Backend, DevOps, etc.)" class="form__input"></textarea>
+            
+            <div class="form__terms">
+                <label>
+                    <input type="checkbox" name="terms" required>
+                    <a href="terms.html">I accept the terms and conditions</a>.
+                </label>
             </div>
-          </div>
-          <p id="passwordStrengthText" class="form__strength-text"></p>
-          <p id="passwordTip" class="form__tip">
-            Sua senha deve conter letras minúsculas e maiúsculas, números e
-            caracteres especiais.
-          </p>
-
-          <img src="./assets/images/icon-error.svg" class="form__error" />
-          <textarea rows="2" placeholder="Specific Interests (Frontend, Backend, DevOps, etc.)"
-            class="form__input"></textarea>
-
-          <div class="form__button" id="button">Enviar</div>
-
-          <div class="form__terms">
-            <label>
-              <input type="checkbox" name="terms" required>
-              <a href="terms.html" > Eu aceito os termos e condições</a>.
-            </label>
-          </div>
+            <button type="submit" name="button" data-button class="form__button">Enviar</button>
         </div>
-      </form>
+    </form>
     </div>
   </main>
 
@@ -81,6 +75,9 @@
       All Rights Reserved. Coded by<span class="footer--span"> Rafael Raizer</span></a>.
     </div>
   </footer>
+
+  <script defer type="text/javascript" src="./assets/js/script.js"></script>
+  
 </body>
 
 </html>
