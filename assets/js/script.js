@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const email = form.email.value;
     const interests = form.interests.value;
 
-    const whatsappUrl = `https://wa.me/5547999327137?text=Olá, Meu Nome: ${firstName} ${lastName}\n Meu Email: ${email}\n Meu Interesse é: ${interests}!`;
+    const whatsappUrl = `https://wa.me/5547999327137?text=Olá, aqui está o retorno do Formulário-Tutorial:Meu Nome: ${firstName} ${lastName} Meu E-mail: ${email }Meu Interesse é na Área: ${interests}.`;
 
     // Redireciona para o WhatsApp
     window.open(whatsappUrl, '_blank');
