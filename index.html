@@ -30,10 +30,8 @@
       <span class="page__info">Para mais dicas, preencha o formulário!</span>
     </div>
     <div class="rightpage">
-      <form 
-        action="https://formsubmit.co/ajax/cfe9ae8569fd516a2b959d44cb748457" 
-        method="POST" 
-        data-form 
+      <form autocomplete="off"       
+        name="formObject" 
         class="form form--subscription">
         <div class="form__input-group">
             <input name="firstName" placeholder="First Name" class="form__input" required />
@@ -42,8 +40,8 @@
             
             <div class="form__password-container">
                 <div class="form__input-wrapper">
-                    <input id="passwordInput" name="password" type="password" placeholder="Password" class="form__input" required />
-                    <i id="togglePassword" class="fas fa-eye form__toggle-password"></i>
+                  <input id="passwordInput" name="password" type="password" placeholder="Password" class="form__input" required /><i id="togglePassword" class="fas fa-eye form__toggle-password"></i>
+
                 </div>
                 <div class="form__strength-bar">
                     <div id="passwordStrengthIndicator" class="form__strength-indicator"></div>
@@ -59,10 +57,12 @@
             <div class="form__terms">
                 <label>
                     <input type="checkbox" name="terms" required>
-                    <a href="terms.html">I accept the terms and conditions</a>.
+                    <a href="./assets/terms.html">I accept the terms and conditions</a>.
                 </label>
             </div>
-            <button type="submit" name="button" data-button class="form__button">Submit</button>
+            <button class="formButton" type="submit" data_form_button title="Click to send message">Submit</button>
+
+
         </div>
     </form>
     </div>

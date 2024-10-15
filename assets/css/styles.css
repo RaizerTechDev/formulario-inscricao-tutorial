@@ -181,10 +181,9 @@ main {
   caret-color: var(--DarkBlue);
 }
 
-.form__button {
+.formButton {
   background-color: var(--Green);
-  width: calc(100% - 2rem);
-  padding: 1rem;
+  padding: 0.1rem;
   margin-top: 1rem;
   color: white;
   text-transform: uppercase;
