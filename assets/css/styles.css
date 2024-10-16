@@ -198,7 +198,7 @@ button:disabled {
   background: #555b69;
 }
 
-.button--animation {
+.footer__button--animation {
   width: 30px; /* Ajuste o tamanho conforme necessário */
   height: 30px; /* Ajuste o tamanho conforme necessário */
   vertical-align: middle; /* Centraliza verticalmente em relação ao texto */
