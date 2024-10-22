@@ -60,17 +60,18 @@ document.addEventListener("DOMContentLoaded", function () {
     passwordStrengthText.textContent = strengthText;
   });
 
- // Função que adiciona a imagem de carregamento ao botão
- const renderButton = {
-  image: '<img class="footer__button--animation" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWI0azVpZzY1YzJqMDlxNjFlZHNhNmE0aGQ3dnhic2h4eGY2dmdhdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7bu3XilJ5BOiSGic/giphy.gif" alt="Loading">',
-  message: "SEND MESSAGE",
-};
+  // Função que adiciona a imagem de carregamento ao botão
+  const renderButton = {
+    image:
+      '<img class="footer__button--animation" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWI0azVpZzY1YzJqMDlxNjFlZHNhNmE0aGQ3dnhic2h4eGY2dmdhdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7bu3XilJ5BOiSGic/giphy.gif" alt="Loading">',
+    message: "SEND MESSAGE",
+  };
 
   // Redirecionar para WhatsApp com os dados do formulário
   form.addEventListener("submit", function (e) {
     e.preventDefault(); // Impede o envio padrão do formulário
-      // Adiciona o GIF de carregamento
-      submitButton.innerHTML = renderButton.image;
+    // Adiciona o GIF de carregamento
+    submitButton.innerHTML = renderButton.image;
 
     const firstName = form.firstName.value;
     const lastName = form.lastName.value;
@@ -78,11 +79,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const password = form.password.value;
     const interests = form.interests.value;
 
-  const whatsappUrl = `https://wa.me/5547999327137?text=Olá, estou retornando o Formulário-Tutorial:%0A
-      Meu Nome: ${firstName} ${lastName}%0A 
-      E-mail: ${email}%0A 
-      Password: ${password}%0A
-      Interesse na Área: ${interests}.`;
+    const whatsappUrl = `https://wa.me/5547999327137?text=${encodeURIComponent(`Olá, estou retornando o Formulário-Tutorial:\n
+      Meu Nome: ${firstName} ${lastName}\n
+      E-mail: ${email}\n
+      Password: ${password}\n
+      Interesse na Área: ${interests}.`)}`;
 
     // Simula um tempo de espera antes de esconder a imagem de carregamento
     setTimeout(() => {
@@ -96,6 +97,5 @@ document.addEventListener("DOMContentLoaded", function () {
         window.open(whatsappUrl, "_self");
       }
     }, 2000);
-
   });
 });
